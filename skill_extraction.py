@@ -19,6 +19,6 @@ df["extracted_skill_count"] = df["extracted_skills"].apply(len)
 print("Jobs with at least 1 skill matched:", (df["extracted_skill_count"] > 0).sum())
 print("Total postings:", len(df))
 
-# Skill demand by domain — this is the actually useful business insight
+# Skill demand by domain 
 exploded = df.explode("extracted_skills").dropna(subset=["extracted_skills"])
 print(exploded.groupby("skill_domain")["extracted_skills"].value_counts().groupby(level=0).head(5))
